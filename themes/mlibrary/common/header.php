@@ -8,9 +8,9 @@
 <html>
 <head>
   <?php
-    if (isset($title)) { $titleParts[] = strip_formatting($title); }
     $titleParts[] = option('site_title');
   ?>
+
 
   <title><?php echo implode(' | ', $titleParts) . ' | ' . 'MLibrary' ?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -62,16 +62,6 @@
       <div id="primary-nav">
         <?php
           echo nav(array(
-            array(
-              'label' => 'Home',
-              'uri' => url(''),
-              'class' => 'nav-home'
-            ),
-            array(
-              'label' => 'Browse',
-              'uri' => url('exhibits'),
-              'class' => 'nav-browse'
-            ),
             array(
               'label' => 'Item Archive',
               'uri' => url('items'),

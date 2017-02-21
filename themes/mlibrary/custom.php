@@ -70,7 +70,7 @@ function mlibrary_display_related_exhibits($item) {
 
 // Used in items/show.php and exhibits/item.php
 function mlibrary_display_video() {
- $elementvideos = metadata('item',array('Item Type Metadata', 'Video_embeded_code'),array(
+ $elementvideos = metadata('item',array('Item Type Metadata', 'video_embedded_code'),array(
                                                                                    'no_escape' => true,
                                                                                    'all' => true
                                                                                    )
@@ -83,7 +83,7 @@ function mlibrary_display_video() {
                          );
 
   //Kultura video
- $elementvideos_VCM = metadata('item',array('Item Type Metadata', 'video_embeded_code_VCM'),array(
+ $elementvideos_VCM = metadata('item',array('Item Type Metadata', 'video_embedded_code_VCM'),array(
                                                                                             'no_escape' => true,
                                                                                             'all' => true
                                                                                             )
@@ -238,8 +238,8 @@ function mlibrary_display_rss($feedUrl, $num = 3) {
  **/
 function mlibrary_exhibit_builder_video_attachment($item, $thumnail_image) {
 	$remove[] = "'";
-	$elementids_youtube_video = metadata($item, array('Item Type Metadata', 'Video_embeded_code'), array('no_escape'=>true,'all'=>true));
-	$elementvideos_kultura_VCM = metadata($item, array('Item Type Metadata', 'video_embeded_code_VCM'),array('no_escape'=>true, 'all'=>true));
+	$elementids_youtube_video = metadata($item, array('Item Type Metadata', 'video_embedded_code'), array('no_escape'=>true,'all'=>true));
+	$elementvideos_kultura_VCM = metadata($item, array('Item Type Metadata', 'video_embedded_code_VCM'),array('no_escape'=>true, 'all'=>true));
 	if (!empty($elementids_youtube_video)) {
 		foreach ($elementids_youtube_video as $elementid_youtube_video) {
 			$videoid = str_replace($remove, "", $elementid_youtube_video);

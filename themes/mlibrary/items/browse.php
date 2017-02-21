@@ -22,20 +22,22 @@
   <div class="pretty-list">
     <?php foreach (loop('items') as $item): ?>
       <?php
+
         $has_image = metadata('item', 'has thumbnail')
                      || metadata(
                           'item',
-                          array('Item Type Metadata', 'video_embeded_code_VCM'),
+                          array('Item Type Metadata', 'video_embedded_code_VCM'),
                           array('no_escape'=>true, 'all'=>true)
                         )
                      || metadata(
                           'item',
-                          array('Item Type Metadata', 'Video_embeded_code'),
+                          array('Item Type Metadata', 'video_embedded_code'),
                           array('no_escape' => true, 'all' => true)
                         );
         $has_tags = metadata('item', 'has tags');
         $Creator = metadata('item', array('Dublin Core', 'Creator'));
         $Date = metadata('item', array('Dublin Core', 'Date'));
+
       ?>
       <article class="cf<?php
         if (!$has_image) { echo ' no_image'; }
@@ -76,7 +78,7 @@
 
             } elseif ($elementvideos_VCM = metadata(
                                             'item',
-                                            array('Item Type Metadata', 'video_embeded_code_VCM'),
+                                            array('Item Type Metadata', 'video_embedded_code_VCM'),
                                             array('no_escape'=>true, 'all'=>true)
                                           )) {
               $data = $elementvideos_VCM[0];
@@ -87,7 +89,7 @@
 
             } elseif ($elementvideos = metadata(
                                         'item',
-                                        array('Item Type Metadata', 'Video_embeded_code'),
+                                        array('Item Type Metadata', 'video_embedded_code'),
                                         array('no_escape' => true, 'all' => true)
                                       )) {
               $videoid = str_replace($remove, "", $elementvideos);
