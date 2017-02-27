@@ -55,7 +55,7 @@
           <img src="<?php echo img('square_mlibrary.png','images/layout'); ?>" width="61" height="60" alt="University of Michigan Library" />
         </a>
         <a href="<?php echo url('') ?>">
-          <img src="<?php echo img('online-exhibits.png','images/layout'); ?>" width="286" height="33" alt="Online Exhibits" />
+          <img src="<?php echo img('Artboard.png','images/layout'); ?>" width="286" height="33" alt="UpstArt200" />
         </a>
       </div>
 
