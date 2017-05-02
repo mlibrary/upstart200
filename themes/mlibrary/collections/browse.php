@@ -23,7 +23,7 @@ $title = __('Browse Collections');
 
   <?php if (count($collections) > 0): ?>
 
-    <div id="collectionss" class="pretty-list">
+    <div class="pretty-list">
 
       <?php
         foreach (loop('collection') as $collection):

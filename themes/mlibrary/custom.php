@@ -304,11 +304,21 @@ function mlibrary_add_vars_to_href($html, $variables) {
   );
 }
 
+
+//called by collection show page
+function mlibrary_link_to_collection_item_with_return($text, $attributes = []) {
+  return mlibrary_add_vars_to_href(
+    link_to_item($text, $attributes),
+    [ 'page' => (isset($_GET['page'])) ? $_GET['page'] : '1',
+      'collection' => get_current_record('collection')->id]
+  );
+}
+
 // called by items/browse.php
 function mlibrary_link_to_item_with_return($text, $attributes = []) {
   return mlibrary_add_vars_to_href(
     link_to_item($text, $attributes),
-    [ 'page' => (isset($_GET['page'])) ? $_GET['page'] : '1' ]
+    [ 'page' => (isset($_GET['page'])) ? $_GET['page'] : '1']
   );
 }
 

@@ -13,6 +13,7 @@
       'bodyclass' => 'show item'
     )
   );
+
  // if the item is part of the exhibit builder layout
  if (isset($_GET['exhibit']) && isset($_GET['page'])) {
     $pageClean = html_escape($_GET['page']);
@@ -23,6 +24,13 @@
           get_record_by_id('exhibit_page', $pageClean)
         ) .
       '">Return to Exhibit</a></div>';
+  }
+  elseif (isset($_GET['collection']) && isset($_GET['page'])) {
+    $pageClean = html_escape($_GET['page']);
+    $collectionsClean = html_escape($_GET['collection']);
+    echo '<div class="button exhibit-item-back-button">'.
+        '<a href="' . url('collections') . '?page=' . $pageClean . '">Return to Collection Archive</a>
+      </div>';     
   }
   // if the item is part of items archive
   elseif (isset($_GET['page'])) {
@@ -273,7 +281,7 @@
       echo '<div id="item-metadata">' . $rendered_item_metatdata . '</div>';
     }
 
-  if (isset($_GET['page']) && !isset($_GET['exhibit'])) {
+  if (isset($_GET['page']) && (!isset($_GET['exhibit']) && (!isset($_GET['collection'])))) {
     echo mlibrary_add_vars_to_href(
       '<ul class="item-pagination navigation">
         <li id="previous-item" class="button">' .
@@ -287,6 +295,7 @@
 
     );
   }
+
   ?>
 </div> <!--primary-->
 

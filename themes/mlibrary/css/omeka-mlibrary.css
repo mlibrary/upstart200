@@ -20,12 +20,12 @@ div.layout-file-text .left ~ p {
 
 .layout-file-text .exhibit-items.right {
   margin-bottom: 1.2em;
-  margin-left: 4%;
+  margin-left: 3%;
 }
 
 .layout-file-text .exhibit-items.left {
   margin-bottom: 1.2em;
-  margin-right: 4%;
+  margin-right: 3%;
 }
 
 div.layout-file-text .right.fullsize ~ p {
@@ -537,6 +537,18 @@ body#home #content #primary #featured-exhibit-wrap h2 {
   font-size: 1em;
 }
 
+#collection.browse #primary {
+  font-size: 1em;
+}
+
+#exhibit.browse .wrap, 
+#items.browse .wrap, #collection.browse .wrap {
+    background-color: transparent;
+    padding: 0;
+    width: 995px;
+}
+
+
 .pretty-list {
   background-color: #EEE;
   margin-left: -18px;
@@ -609,6 +621,7 @@ body#home #content #primary #featured-exhibit-wrap h2 {
 }
 
 
+
 .pretty-list .no_tags .item-body {
   width: 70%;
 }
@@ -655,6 +668,7 @@ body#home #content #primary #featured-exhibit-wrap h2 {
 .pretty-list .collection-description {
   margin: 0.7em 0 0 0;
 }
+
 
 
 .pretty-list .img-wrap {

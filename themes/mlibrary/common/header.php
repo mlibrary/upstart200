@@ -63,9 +63,10 @@
         <?php
           echo nav(array(
             array(
-              'label' => 'Item Archive',
-              'uri' => url('items'),
-              'class' => 'nav-items'
+              'label' => 'Collections',
+              'uri' => url('collections'),
+              //'class' => 'nav-items'
+              'class' => 'nav-collections'
             )
           ));
         ?>
