@@ -50,10 +50,16 @@ $title = __('Browse Collections');
 
                 echo '</div>';
 
-                if($collectionDescription = metadata($collection, array('Dublin Core','Description'))) {
+                if($collectionDescription = metadata($collection, array('Dublin Core','Description'), array('snippet' => 150))) {
                   echo '<p class="collection-Description">' . $collectionDescription . '</p>';
                 }
+                
 
+                echo '<p class="view-items-link">' .
+                     link_to_items_in_collection(__('View All Items'),$collection) .
+                     ' | '.
+                     link_to_collection(__('Read More Information'),$collection) .
+                     '</p>'; 
                 echo '</div>';
 
               ?>
