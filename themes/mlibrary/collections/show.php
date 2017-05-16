@@ -1,111 +1,31 @@
 <?php
-  $collectionTitle = strip_formatting(metadata('collection', array('Dublin Core', 'Title')));
-  echo head(array('title'=>$collectionTitle,'bodyclass' => 'collections show')); ?>
-  <h1><?php echo $collectionTitle;?></h1>
-  <div id="primary">
-    <?php echo all_element_texts('collection'); ?>
+$collectionTitle = strip_formatting(metadata('collection', array('Dublin Core', 'Title')));
+?>
 
-    <div class="pretty-list">
-      <?php foreach (loop('items') as $item): ?>
-        <?php
-           $has_image = metadata('item', 'has thumbnail')
-                     || metadata(
-                          'item',
-                          array('Item Type Metadata', 'video_embeded_code_VCM'),
-                          array('no_escape'=>true, 'all'=>true)
-                        )
-                     || metadata(
-                          'item',
-                          array('Item Type Metadata', 'Video_embeded_code'),
-                          array('no_escape' => true, 'all' => true)
-                        );
-           $has_tags = metadata('item', 'has tags');
-           $Description = metadata('item', array('Dublin Core', 'Description'));
-           $Date = metadata('item', array('Dublin Core', 'Date'));
-      ?>
-      <article class="cf<?php
-               if (!$has_image) { echo ' no_image'; }
-               if (!$has_tags) { echo ' no_tags'; }
-        ?>"
-      >
-      <div class="item-body">
-         <h2 class="item-heading">
-          <?php
-            echo mlibrary_link_to_collection_item_with_return(
-                 strip_formatting(
-                    metadata(
-                        'item',
-                        array('Dublin Core', 'Title')
-                    )
-                 ),
-                array('class'=>'permalink')
-              );
-          ?>
-         </h2>
-         <?php
-            if ($has_image) { echo '<div class="img-wrap">'; }
-            if (metadata('item', 'has thumbnail')) {
+<?php echo head(array('title'=> $collectionTitle, 'bodyclass' => 'collections show')); ?>
 
-              echo mlibrary_link_to_item_with_return(
-                item_image(
-                  'square_thumbnail',
-                  array(
-                    'alt' => strip_formatting(
-                      metadata(
-                      'item',
-                      array('Dublin Core', 'Title')
-                    ))
-                  )
-                )
-              );
+<h1><?php echo $collectionTitle; ?></h1>
 
-            } elseif ($elementvideos_VCM = metadata(
-                                            'item',
-                                            array('Item Type Metadata', 'video_embeded_code_VCM'),
-                                            array('no_escape'=>true, 'all'=>true)
-                                          )) {
-              $data = $elementvideos_VCM[0];
-              preg_match('/\/entry_id\/([a-zA-Z0-9\_]*)?/i', $data, $match);
-              $entry_id = $match[1];
+<?php echo all_element_texts('collection'); ?>
 
-              echo mlibrary_link_to_item_with_return('<img src="http://cdn.kaltura.com/p/'
-               . $partnerId . '/thumbnail/entry_id/' . $match[1] .
-               '/width/200/height/200/type/1/quality/100" / style="width:200px; height:200px">');
-
-            } elseif ($elementvideos = metadata(
-                                        'item',
-                                        array('Item Type Metadata', 'Video_embeded_code'),
-                                        array('no_escape' => true, 'all' => true)
-                                      )) {
-              $videoid = str_replace($remove, "", $elementvideos);
-              $image = "<img src='http://i4.ytimg.com/vi/" . $videoid[0] . "/default.jpg' style='width:200px; height:200px'/>";
-              echo mlibrary_link_to_item_with_return($image);
-            }
-
-            if ($has_image) { echo '</div>'; }
-            // if condition added to display metadata if it is available.
-            if ((!empty($Description)) || (!empty($Date))) {
-              $metadata = [
-                'Description'             => metadata('item', array('Dublin Core', 'Description')),
-                'Date'                   => metadata('item', array('Dublin Core', 'Date')),
-                'Additional Information' => metadata(
-                  'item',
-                  array('Item Type Metadata', 'Text'),
-                  array('snippet' => 250)
-                )
-              ];
-              echo '<dl>';
-              foreach ($metadata as $label => $info) {
-                if ($info) { echo '<dt>' . $label . ' </dt> <dd>' . $info . '</dd>'; }
-              }
-              echo '</dl>';
-            }
-          ?>
+<div id="collection-items">
+    <p class="view-items-link"><?php echo link_to_items_browse(__('Items in the %s Collection', $collectionTitle), array('collection' => metadata('collection', 'id')));?></p>
+    <?php if (metadata('collection', 'total_items') > 0): ?>
+        <?php foreach (loop('items') as $item): ?>
+        <?php $itemTitle = strip_formatting(metadata('item', array('Dublin Core', 'Title'))); ?>
+        <div class="item hentry">
+            <?php if (metadata('item', 'has thumbnail')): ?>
+            <div class="item-img">
+                <?php echo link_to_item(item_image('square_thumbnail', array('alt' => $itemTitle))); ?>
+            </div>
+            <?php endif; ?>
         </div>
-           <?php //fire_plugin_hook('public_items_browse_each', array('view' => $this, 'item' => $item)); ?>
-      </article>
-    <?php endforeach; ?>
-</div><!-- end primary -->
-<?php fire_plugin_hook('public_collections_show', array('view' => $this, 'collection' => $collection)); ?>
-<?php echo foot(); ?>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p><?php echo __("There are currently no items within this collection."); ?></p>
+    <?php endif; ?>
+</div><!-- end collection-items -->
 
+<?php fire_plugin_hook('public_collections_show', array('view' => $this, 'collection' => $collection)); ?>
+
+<?php echo foot(); ?>

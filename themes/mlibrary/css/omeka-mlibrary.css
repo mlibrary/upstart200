@@ -620,7 +620,16 @@ body#home #content #primary #featured-exhibit-wrap h2 {
   color: #555;
 }
 
+.pretty-list .tags-heading {
+  margin: 0;
+  font-size: 1.3em;
+}
 
+.pretty-list .collection-heading {
+  font-size: 1.4em;
+  line-height: 1.5em;
+  margin: 0;
+}
 
 .pretty-list .no_tags .item-body {
   width: 70%;
