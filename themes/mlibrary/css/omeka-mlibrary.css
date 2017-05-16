@@ -18,6 +18,15 @@ div.layout-file-text .left ~ p {
   width:48%;
 }*/
 
+#collection-items img {
+    clear: none;
+    display: inline;
+    float: left;
+    height: 180px;
+    margin-right: 10px;
+    width: 180px;
+}
+
 .layout-file-text .exhibit-items.right {
   margin-bottom: 1.2em;
   margin-left: 3%;
