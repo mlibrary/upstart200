@@ -9,7 +9,7 @@ $collectionTitle = strip_formatting(metadata('collection', array('Dublin Core', 
 <?php echo all_element_texts('collection'); ?>
 
 <div id="collection-items">
-    <p class="view-items-link"><?php echo link_to_items_browse(__('Items in the %s Collection', $collectionTitle), array('collection' => metadata('collection', 'id')));?></p>
+    <p class="view-items-link"><?php echo link_to_items_browse(__('Items in the %s', $collectionTitle), array('collection' => metadata('collection', 'id')));?></p>
     <?php $counter = 1; ?>
     <?php if (metadata('collection', 'total_items') > 0): ?>
       <?php foreach (loop('items') as $item): ?>
