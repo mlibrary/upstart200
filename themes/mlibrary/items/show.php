@@ -25,7 +25,7 @@
         ) .
       '">Return to Exhibit</a></div>';
   }
-  elseif (isset($_GET['collection']) && isset($_GET['page'])) {
+/*  elseif (isset($_GET['collection']) && isset($_GET['page'])) {
     $pageClean = html_escape($_GET['page']);
     $collectionsClean = html_escape($_GET['collection']);
     echo '<div class="button exhibit-item-back-button">'.
@@ -38,7 +38,7 @@
         echo '<div class="button exhibit-item-back-button">' .
         '<a href="' . url('items') . '?page=' . $pageClean . '">Return to Item Archive</a>
       </div>';
-  }
+  }*/
 ?>
 <h1><?php echo $item_title; ?></h1>
 <div id="primary">
