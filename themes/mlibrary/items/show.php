@@ -16,20 +16,23 @@
 
  // if the item is part of the exhibit builder layout
  if (isset($_GET['exhibit']) && isset($_GET['page'])) {
-    $pageClean = html_escape($_GET['page']);
-    $exhibitClean = html_escape($_GET['exhibit']);
-    if (($exhibit->title) == 'upstart200') {
-         $exhibit_uri = exhibit_builder_exhibit_uri(
+       $pageClean = html_escape($_GET['page']);
+       $exhibitClean = html_escape($_GET['exhibit']);
+       if (($exhibit->title) == 'UpstART 200') {
+           $exhibit_uri = exhibit_builder_exhibit_uri(
                          get_record_by_id('exhibit', $exhibitClean));
-    } else {
-         $exhibit_uri = exhibit_builder_exhibit_uri(
+         
+           $exhibit_uri = $exhibit_uri.'/submit-your-work';
+
+       } else {
+           $exhibit_uri = exhibit_builder_exhibit_uri(
                          get_record_by_id('exhibit', $exhibitClean),
                          get_record_by_id('exhibit_page', $pageClean));
-    }  
+       }  
     
-    echo '<div class="button exhibit-item-back-button"><a href="' . $exhibit_uri .
-      '">Return to Exhibit</a></div>';
-  }
+       echo '<div class="button exhibit-item-back-button"><a href="' . $exhibit_uri .
+       '">Return to Exhibit</a></div>'; 
+ }
 
 /*  elseif (isset($_GET['collection']) && isset($_GET['page'])) {
     $pageClean = html_escape($_GET['page']);
