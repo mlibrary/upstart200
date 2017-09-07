@@ -31,7 +31,7 @@
        }  
     
        echo '<div class="button exhibit-item-back-button"><a href="' . $exhibit_uri .
-       '">Return to Exhibit</a></div>'; 
+       '">Submit your Work</a></div>'; 
  }
 
 /*  elseif (isset($_GET['collection']) && isset($_GET['page'])) {
