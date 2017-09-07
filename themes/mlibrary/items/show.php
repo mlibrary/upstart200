@@ -18,13 +18,19 @@
  if (isset($_GET['exhibit']) && isset($_GET['page'])) {
     $pageClean = html_escape($_GET['page']);
     $exhibitClean = html_escape($_GET['exhibit']);
-    echo '<div class="button exhibit-item-back-button"><a href="' .
-        exhibit_builder_exhibit_uri(
-          get_record_by_id('exhibit', $exhibitClean),
-          get_record_by_id('exhibit_page', $pageClean)
-        ) .
+    if (($exhibit->title) == 'upstart200') {
+         $exhibit_uri = exhibit_builder_exhibit_uri(
+                         get_record_by_id('exhibit', $exhibitClean));
+    } else {
+         $exhibit_uri = exhibit_builder_exhibit_uri(
+                         get_record_by_id('exhibit', $exhibitClean),
+                         get_record_by_id('exhibit_page', $pageClean));
+    }  
+    
+    echo '<div class="button exhibit-item-back-button"><a href="' . $exhibit_uri .
       '">Return to Exhibit</a></div>';
   }
+
 /*  elseif (isset($_GET['collection']) && isset($_GET['page'])) {
     $pageClean = html_escape($_GET['page']);
     $collectionsClean = html_escape($_GET['collection']);
