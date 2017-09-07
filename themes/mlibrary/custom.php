@@ -278,7 +278,7 @@ function mlibrary_exhibit_builder_attachment($html, $compact) {
     $item = $compact['attachment']->getItem();
     if (($item !== null) and (!empty($item->getItemType()))) {
       $item_type = $item->getItemType();
-      if (($item_type =='Video')) {
+      if (($item_type['name'] == 'Video')) {
         $html = mlibrary_exhibit_builder_video_attachment($item, $thumnail_image);
         if (!empty($compact['attachment']['caption'])) {
            $html .= $compact['attachment']['caption'];
